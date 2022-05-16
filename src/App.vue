@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col w-full h-full justify-start">
     <main-nav />
     <hero />
   </div>
