@@ -7,7 +7,9 @@
           <headline />
           <job-search-form />
         </div>
-        <div class="col-start-7 col-span-5"></div>
+        <div class="col-start-7 col-span-5 self-center justify-self-center">
+          <img src="@/assets/images/hero-01.png" alt="" />
+        </div>
         <div class="col-start-12 col-span-1"></div>
       </div>
     </section>
@@ -15,8 +17,9 @@
 </template>
 
 <script>
-import Headline from "@/components/Headline.vue";
-import JobSearchForm from "@/components/JobSearchForm.vue";
+import Headline from "@/components/JobSearch/Headline.vue";
+import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
+
 export default {
   name: "HeroComponent",
   components: {
