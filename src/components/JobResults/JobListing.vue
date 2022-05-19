@@ -1,60 +1,59 @@
 <template>
-  <main class="flex-auto p-8 bg-brand-gray-2">
-    <ol>
-      <li class="mb-7">
-        <router-link
-          to="/jobs/results/1"
-          class="block mx-auto bg-white border border-solid border-brand-gray-2 rounded hover:shadow-gray transition-shadow"
-        >
-          <div class="pt-5 pb-2 mx-8 border border-solid border-brand-gray-2">
-            <h2 class="mb-2 text-2xl">
-              Strategic Partnerships Development Manager, Ad-Supported Services
-              and Monetization
-            </h2>
-            <div class="flex flex-row align-middle">
-              <div class="mr-5">
-                <font-awesome-icon
-                  :icon="['fas', 'building']"
-                  class="mr-2 text-brand-gray-400"
-                />
-                <span>Bobo</span>
-              </div>
-
-              <div>
-                <font-awesome-icon
-                  :icon="['fas', 'location-dot']"
-                  class="mr-2 text-brand-gray-400"
-                />
-                <span>San Francisco, CA, USA</span>
-              </div>
-            </div>
+  <li class="mb-7">
+    <router-link
+      to="/jobs/results/1"
+      class="block mx-auto bg-white border border-solid border-brand-gray-2 rounded hover:shadow-gray transition-shadow"
+    >
+      <div class="pt-5 pb-2 mx-8 border border-solid border-brand-gray-2">
+        <h2 class="mb-2 text-2xl">
+          Strategic Partnerships Development Manager, Ad-Supported Services and
+          Monetization
+        </h2>
+        <div class="flex flex-row align-middle">
+          <div class="mr-5">
+            <font-awesome-icon
+              :icon="['fas', 'building']"
+              class="mr-2 text-brand-gray-400"
+            />
+            <span>Bobo</span>
           </div>
 
-          <div class="px-8 py-4">
-            <div>
-              <h3 class="mt-1 mb-2">Qualifications:</h3>
-              <div>
-                <ul class="pl-8 list-disc">
-                  <li>Bachelor's degree or equivalent practice experience</li>
-                  <li>5 years of experience in program management</li>
-                  <li>
-                    Experience analyzing data through querying database (e.g.
-                    SQL), using spreadsheet software, and creating statistical
-                    models
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="mt-t text-center">
-              <router-link to="/jobs/results/1" class="text-brand-blue-1"
-                >Expand</router-link
-              >
-            </div>
+          <div>
+            <font-awesome-icon
+              :icon="['fas', 'location-dot']"
+              class="mr-2 text-brand-gray-400"
+            />
+            <span>San Francisco, CA, USA</span>
           </div>
-        </router-link>
-      </li>
-    </ol>
-  </main>
+        </div>
+      </div>
+
+      <div class="px-8 py-4">
+        <div>
+          <h3 class="mt-1 mb-2">Qualifications:</h3>
+          <div>
+            <ul class="pl-8 list-none">
+              <li class="before:content-['•'] before:text-brand-gray-400">
+                Bachelor's degree or equivalent practice experience
+              </li>
+              <li class="before:content-['•'] before:text-brand-gray-400">
+                5 years of experience in program management
+              </li>
+              <li class="before:content-['•'] before:text-brand-gray-400">
+                Experience analyzing data through querying database (e.g. SQL),
+                using spreadsheet software, and creating statistical models
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-t text-center">
+          <router-link to="/jobs/results/1" class="text-brand-blue-1"
+            >Expand</router-link
+          >
+        </div>
+      </div>
+    </router-link>
+  </li>
 </template>
 
 <script>
