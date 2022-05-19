@@ -16,7 +16,7 @@
             data-test="main-nav-list-item"
           >
             <router-link
-              :to="menuItem.link"
+              :to="menuItem.url"
               class="flex items-center h-full py-2.5"
               >{{ menuItem.text }}</router-link
             >
@@ -56,12 +56,12 @@ export default {
       company: "Bobo Careers",
       url: "https://careers.google.com",
       menuItems: [
-        { text: "Teams", link: "" },
-        { text: "Locations", link: "" },
-        { text: "Life at Bobo", link: "" },
-        { text: "How we hire", link: "" },
-        { text: "Students", link: "" },
-        { text: "Jobs", link: "/jobs/results" },
+        { text: "Teams", url: "/" },
+        { text: "Locations", url: "/" },
+        { text: "Life at Bobo", url: "/" },
+        { text: "How we hire", url: "/" },
+        { text: "Students", url: "/" },
+        { text: "Jobs", url: "/jobs/results" },
       ],
       isLoggedIn: false,
     };
