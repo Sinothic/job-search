@@ -1,13 +1,12 @@
 <template>
   <li class="mb-7">
     <router-link
-      to="/jobs/results/1"
+      :to="jobPageLink"
       class="block mx-auto bg-white border border-solid border-brand-gray-2 rounded hover:shadow-gray transition-shadow"
     >
-      <div class="pt-5 pb-2 mx-8 border border-solid border-brand-gray-2">
+      <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-1">
         <h2 class="mb-2 text-2xl">
-          Strategic Partnerships Development Manager, Ad-Supported Services and
-          Monetization
+          {{ job.title }}
         </h2>
         <div class="flex flex-row align-middle">
           <div class="mr-5">
@@ -15,15 +14,23 @@
               :icon="['fas', 'building']"
               class="mr-2 text-brand-gray-400"
             />
-            <span>Bobo</span>
+            <span>{{ job.organization }}</span>
           </div>
 
-          <div>
+          <div class="flex flex-row">
             <font-awesome-icon
               :icon="['fas', 'location-dot']"
               class="mr-2 text-brand-gray-400"
             />
-            <span>San Francisco, CA, USA</span>
+            <ul class="flex flex-row">
+              <li
+                v-for="(location, index) in job.locations"
+                :key="index"
+                class="inline-block mr-5"
+              >
+                {{ location }}
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -33,21 +40,18 @@
           <h3 class="mt-1 mb-2">Qualifications:</h3>
           <div>
             <ul class="pl-8 list-none">
-              <li class="before:content-['•'] before:text-brand-gray-400">
-                Bachelor's degree or equivalent practice experience
-              </li>
-              <li class="before:content-['•'] before:text-brand-gray-400">
-                5 years of experience in program management
-              </li>
-              <li class="before:content-['•'] before:text-brand-gray-400">
-                Experience analyzing data through querying database (e.g. SQL),
-                using spreadsheet software, and creating statistical models
+              <li
+                v-for="(qualification, index) in job.minimumQualifications"
+                :key="index"
+                class="before:content-['•'] before:text-brand-gray-400 before:mr-3"
+              >
+                {{ qualification }}
               </li>
             </ul>
           </div>
         </div>
         <div class="mt-t text-center">
-          <router-link to="/jobs/results/1" class="text-brand-blue-1"
+          <router-link :to="jobPageLink" class="text-brand-blue-1"
             >Expand</router-link
           >
         </div>
@@ -59,6 +63,17 @@
 <script>
 export default {
   name: "JobListing",
+  props: {
+    job: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    jobPageLink() {
+      return `/jobs/results/${this.job.id}`;
+    },
+  },
 };
 </script>
 
