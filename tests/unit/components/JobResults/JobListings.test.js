@@ -3,7 +3,6 @@ import { shallowMount, flushPromises, RouterLinkStub } from "@vue/test-utils";
 jest.mock("axios");
 
 import JobListings from "@/components/JobResults/JobListings.vue";
-import { createConfigItem } from "@babel/core";
 
 const createRoute = (queryParams = {}) => ({
   query: {

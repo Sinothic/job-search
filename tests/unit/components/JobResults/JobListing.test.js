@@ -1,7 +1,6 @@
 import { mount, RouterLinkStub } from "@vue/test-utils";
 
 import JobListing from "@/components/JobResults/JobListing.vue";
-import { RouterLink } from "vue-router";
 
 describe("JobListing", () => {
   const createJobPros = (jobProps = {}) => ({
