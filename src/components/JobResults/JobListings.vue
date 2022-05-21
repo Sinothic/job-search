@@ -1,13 +1,34 @@
 <template>
   <main class="flex-auto p-8 bg-brand-gray-2">
-    <ol>
+    <ol class="max-w-5xl mx-auto">
       <job-listing
-        v-for="job in jobs"
+        v-for="job in displayedJobs"
         :key="job.id"
         :job="job"
         data-test="job-listing"
+        class="border border-brand-gray-1 rounded"
       />
     </ol>
+
+    <div class="flex flex-row justify-between max-w-5xl mx-auto">
+      <div>
+        <p class="text-sm">Page {{ currentPage }}</p>
+      </div>
+      <div class="flex items-center justify-center gap-2">
+        <router-link
+          v-if="previousPage"
+          class="text-sm font-semibold text-brand-blue-1"
+          :to="{ name: 'JobResults', query: { page: previousPage } }"
+          >Previous</router-link
+        >
+        <router-link
+          v-if="nextPage"
+          class="text-sm font-semibold text-brand-blue-1"
+          :to="{ name: 'JobResults', query: { page: nextPage } }"
+          >Next</router-link
+        >
+      </div>
+    </div>
   </main>
 </template>
 
@@ -25,6 +46,27 @@ export default {
     return {
       jobs: [],
     };
+  },
+  computed: {
+    currentPage() {
+      const pageString = this.$route.query.page || "1";
+      return Number.parseInt(pageString);
+    },
+    previousPage() {
+      const previousPage = this.currentPage - 1;
+      return previousPage >= 1 ? previousPage : undefined;
+    },
+    nextPage() {
+      const nextPage = this.currentPage + 1;
+      const maxPage = this.jobs.length / 10;
+      return nextPage <= maxPage ? nextPage : undefined;
+    },
+    displayedJobs() {
+      const pageNumber = this.currentPage;
+      const firstIndexJob = (pageNumber - 1) * 10;
+      const lastIndexJob = pageNumber * 10;
+      return this.jobs.slice(firstIndexJob, lastIndexJob);
+    },
   },
   async mounted() {
     const response = await axios.get("http://localhost:3000/jobs");
