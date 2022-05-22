@@ -30,6 +30,10 @@ To use job search, follow these steps:
 yarn serve
 ```
 
+```
+yarn backend
+```
+
 ### Compiles and minifies for production
 
 ```
