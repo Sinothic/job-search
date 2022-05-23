@@ -2,6 +2,7 @@
   <div class="py-5 border-b border-solid border-brand-gray-1">
     <div
       class="flex flex-wrap items-center justify-between cursor-pointer select-none"
+      data-test="clickable-area"
       @click="toggleAccordion"
     >
       <h3 class="text-base font-semibold">{{ header }}</h3>
