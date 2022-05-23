@@ -4,18 +4,26 @@
       class="flex flex-wrap items-center justify-between cursor-pointer select-none"
       @click="toggleAccordion"
     >
-      <h3 class="text-base font-semibold">Organizations</h3>
+      <h3 class="text-base font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
     </div>
   </div>
 
-  <div v-if="isOpen" class="w-full mt-5">Child</div>
+  <div v-if="isOpen" class="w-full mt-5">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Accordion",
+  props: {
+    header: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       isOpen: false,
