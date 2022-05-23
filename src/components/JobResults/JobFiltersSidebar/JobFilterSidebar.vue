@@ -9,15 +9,17 @@
           <action-button text="Clear Filters" type="secondary" />
         </div>
       </div>
+      <accordion />
     </section>
   </div>
 </template>
 
 <script>
 import ActionButton from "@/components/Shared/ActionButton.vue";
+import Accordion from "../../Shared/Accordion.vue";
 export default {
   name: "JobFiltersSidebar",
-  components: { ActionButton },
+  components: { ActionButton, Accordion },
 };
 </script>
 
