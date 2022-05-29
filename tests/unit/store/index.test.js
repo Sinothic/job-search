@@ -69,6 +69,29 @@ describe("getters", () => {
   });
 
   describe("FILTERED_JOBS_BY_ORGANIZATIONS", () => {
+    describe("when any organization is selected", () => {
+      it("returns all jobs without any filter", () => {
+        const state = {
+          jobs: [
+            { organization: "Google" },
+            { organization: "Yahoo" },
+            { organization: "Amazon" },
+            { organization: "Facebook" },
+          ],
+          selectedOrganizations: [],
+        };
+
+        const filteredJobs = getters.FILTERED_JOBS_BY_ORGANIZATIONS(state);
+
+        expect(filteredJobs).toEqual([
+          { organization: "Google" },
+          { organization: "Yahoo" },
+          { organization: "Amazon" },
+          { organization: "Facebook" },
+        ]);
+      });
+    });
+
     it("identifies jobs that are  associated with the give organizations", () => {
       const state = {
         jobs: [

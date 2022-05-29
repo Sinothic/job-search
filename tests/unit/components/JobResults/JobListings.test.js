@@ -9,8 +9,8 @@ const createRoute = (queryParams = {}) => ({
   },
 });
 const createStore = (config = {}) => ({
-  state: {
-    jobs: Array(15).fill({}),
+  getters: {
+    FILTERED_JOBS_BY_ORGANIZATIONS: Array(15).fill({}),
   },
   dispatch: jest.fn(),
   ...config,
