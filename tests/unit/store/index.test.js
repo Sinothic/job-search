@@ -36,6 +36,7 @@ describe("mutations", () => {
       expect(state).toEqual({ selectedOrganizations: ["ORG-1", "ORG-2"] });
     });
   });
+
   describe("RECEIVES_JOBS", () => {
     it("receives jobs from API call", () => {
       const state = {
@@ -64,6 +65,27 @@ describe("getters", () => {
 
       const result = getters.UNIQUE_ORGANIZATIONS(state);
       expect(result).toEqual(new Set(["GOOGLE", "FACEBOOK", "AMAZON"]));
+    });
+  });
+
+  describe("FILTERED_JOBS_BY_ORGANIZATIONS", () => {
+    it("identifies jobs that are  associated with the give organizations", () => {
+      const state = {
+        jobs: [
+          { organization: "Google" },
+          { organization: "Yahoo" },
+          { organization: "Amazon" },
+          { organization: "Facebook" },
+        ],
+        selectedOrganizations: ["Google", "Yahoo"],
+      };
+
+      const filteredJobs = getters.FILTERED_JOBS_BY_ORGANIZATIONS(state);
+
+      expect(filteredJobs).toEqual([
+        { organization: "Google" },
+        { organization: "Yahoo" },
+      ]);
     });
   });
 });

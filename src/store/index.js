@@ -6,6 +6,7 @@ export const RECEIVES_JOBS = "RECEIVES_JOBS";
 export const FETCH_JOBS = "FETCH_JOBS";
 export const UNIQUE_ORGANIZATIONS = "UNIQUE_ORGANIZATIONS";
 export const ADD_SELECTED_ORGANIZATIONS = "ADD_SELECTED_ORGANIZATIONS";
+export const FILTERED_JOBS_BY_ORGANIZATIONS = "FILTERED_JOBS_BY_ORGANIZATIONS";
 
 export const state = () => {
   return {
@@ -41,6 +42,11 @@ export const getters = {
       uniqueOrganizations.add(job.organization);
     });
     return uniqueOrganizations;
+  },
+  [FILTERED_JOBS_BY_ORGANIZATIONS](state) {
+    return state.jobs.filter((job) =>
+      state.selectedOrganizations.includes(job.organization)
+    );
   },
 };
 
