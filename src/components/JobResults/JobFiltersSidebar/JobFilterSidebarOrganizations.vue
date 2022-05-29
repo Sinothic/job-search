@@ -8,7 +8,13 @@
             :key="index"
             class="w-1/2 h-8"
           >
-            <input :id="index" type="checkbox" class="mr-3" />
+            <input
+              :id="index"
+              v-model="selectedOrganizations"
+              :value="organization"
+              type="checkbox"
+              class="mr-3"
+            />
             <label :for="index" data-test="organization">{{
               organization
             }}</label>
@@ -28,6 +34,11 @@ export default {
   name: "JobFiltersSidebarOrganizations",
   components: {
     Accordion,
+  },
+  data() {
+    return {
+      selectedOrganizations: [],
+    };
   },
   computed: {
     ...mapGetters([UNIQUE_ORGANIZATIONS]),
