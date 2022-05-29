@@ -9,7 +9,9 @@
             class="w-1/2 h-8"
           >
             <input :id="index" type="checkbox" class="mr-3" />
-            <label :for="index">{{ organization }}</label>
+            <label :for="index" data-test="organization">{{
+              organization
+            }}</label>
           </li>
         </ul>
       </fieldset>
