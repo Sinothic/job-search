@@ -13,6 +13,11 @@ describe("state", () => {
     const initialState = state();
     expect(initialState.jobs).toStrictEqual([]);
   });
+
+  it("store organizations that the user wants filter by", () => {
+    const initialState = state();
+    expect(initialState.selectedOrganizations).toEqual([]);
+  });
 });
 
 describe("mutations", () => {
@@ -24,6 +29,13 @@ describe("mutations", () => {
     });
   });
 
+  describe("ADD_SELECTED_ORGANIZATIONS", () => {
+    it("update organizations that the user chosen to filter by", () => {
+      const state = { selectedOrganizations: [] };
+      mutations.ADD_SELECTED_ORGANIZATIONS(state, ["ORG-1", "ORG-2"]);
+      expect(state).toEqual({ selectedOrganizations: ["ORG-1", "ORG-2"] });
+    });
+  });
   describe("RECEIVES_JOBS", () => {
     it("receives jobs from API call", () => {
       const state = {
