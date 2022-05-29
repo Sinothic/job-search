@@ -21,15 +21,16 @@
 
 <script>
 import Accordion from "@/components/Shared/Accordion.vue";
+import { mapGetters } from "vuex";
+import { UNIQUE_ORGANIZATIONS } from "@/store";
+
 export default {
   name: "JobFiltersSidebarOrganizations",
   components: {
     Accordion,
   },
   computed: {
-    UNIQUE_ORGANIZATIONS() {
-      return this.$store.getters.UNIQUE_ORGANIZATIONS;
-    },
+    ...mapGetters([UNIQUE_ORGANIZATIONS]),
   },
 };
 </script>
