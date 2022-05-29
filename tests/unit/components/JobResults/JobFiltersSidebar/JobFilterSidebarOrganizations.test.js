@@ -26,4 +26,30 @@ describe("JobFilterSidebarOrganizations", () => {
     const organizations = organizationLabels.map((node) => node.text());
     expect(organizations).toEqual(["Facebook", "Meta"]);
   });
+
+  it("comunicates that user has selected a checkbox for organization", async () => {
+    const commit = jest.fn();
+    const $store = {
+      getters: {
+        UNIQUE_ORGANIZATIONS: new Set(["Facebook", "Meta"]),
+      },
+      commit,
+    };
+    const wrapper = mount(JobFilterSidebarOrganizations, {
+      global: {
+        mocks: {
+          $store,
+        },
+        stubs: {
+          "font-awesome-icon": true,
+        },
+      },
+    });
+
+    const clickableArea = wrapper.find("[data-test='clickable-area']");
+    await clickableArea.trigger("click");
+    const metaInput = wrapper.find("[data-test='Meta']");
+    await metaInput.setChecked();
+    expect(commit).toHaveBeenCalledWith("ADD_SELECTED_ORGANIZATIONS", ["Meta"]);
+  });
 });
