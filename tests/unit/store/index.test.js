@@ -1,4 +1,4 @@
-import { actions, mutations, state } from "@/store";
+import { actions, getters, mutations, state } from "@/store";
 import { getJobs } from "@/api/getJobs";
 import axios from "axios";
 jest.mock("@/api/getJobs");
@@ -32,6 +32,26 @@ describe("mutations", () => {
 
       mutations.RECEIVES_JOBS(state, ["JOB 1", "JOB 2"]);
       expect(state.jobs).toEqual(["JOB 1", "JOB 2"]);
+    });
+  });
+});
+
+describe("getters", () => {
+  describe("UNIQUE_ORGANIZATIONS", () => {
+    it("find unique organizations from job list", () => {
+      const state = {
+        jobs: [
+          { organization: "FACEBOOK" },
+          { organization: "GOOGLE" },
+          { organization: "AMAZON" },
+          { organization: "FACEBOOK" },
+          { organization: "GOOGLE" },
+          { organization: "AMAZON" },
+        ],
+      };
+
+      const result = getters.UNIQUE_ORGANIZATIONS(state);
+      expect(result).toEqual(new Set(["GOOGLE", "FACEBOOK", "AMAZON"]));
     });
   });
 });
