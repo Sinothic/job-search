@@ -62,4 +62,19 @@ describe("getters", () => {
       ]);
     });
   });
+
+  describe("UNIQUE_JOB_TYPES", () => {
+    it("find unique job types from job list", () => {
+      const state = {
+        jobs: [
+          { jobType: "Full-time" },
+          { jobType: "Part-time" },
+          { jobType: "Full-time" },
+        ],
+      };
+
+      const result = getters.UNIQUE_JOB_TYPES(state);
+      expect(result).toEqual(new Set(["Full-time", "Part-time"]));
+    });
+  });
 });
