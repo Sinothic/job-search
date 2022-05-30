@@ -17,6 +17,16 @@ describe("mutations", () => {
     });
   });
 
+  describe("ADD_SELECTED_JOB_TYPES", () => {
+    it("update job types that the user chosen to filter by", () => {
+      const state = { selectedJobTypes: [] };
+      mutations.ADD_SELECTED_JOB_TYPES(state, ["Full-time", "Part-time"]);
+      expect(state).toEqual({
+        selectedJobTypes: ["Full-time", "Part-time"],
+      });
+    });
+  });
+
   describe("RECEIVES_JOBS", () => {
     it("receives jobs from API call", () => {
       const state = {
