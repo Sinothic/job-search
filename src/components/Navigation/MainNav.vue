@@ -46,7 +46,7 @@ import ActionButton from "@/components/Shared/ActionButton.vue";
 import ProfileImage from "@/components/Navigation/ProfileImage.vue";
 import SubNav from "@/components/Navigation/SubNav.vue";
 
-import { LOGIN_USER } from "@/store";
+import { LOGIN_USER } from "@/store/constants";
 
 export default {
   name: "MainNav",
