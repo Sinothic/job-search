@@ -1,5 +1,5 @@
 <template>
-  <accordion header="Organizations">
+  <accordion header="Job Types">
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
@@ -9,7 +9,7 @@
             class="w-1/2 h-8"
           >
             <input
-              :id="index"
+              :id="jobType"
               v-model="selectedJobTypes"
               :value="jobType"
               type="checkbox"
@@ -17,7 +17,7 @@
               :data-test="jobType"
               @change="selectJobType"
             />
-            <label :for="index" data-test="job-type">{{ jobType }}</label>
+            <label :for="jobType" data-test="job-type">{{ jobType }}</label>
           </li>
         </ul>
       </fieldset>

@@ -9,7 +9,7 @@
             class="w-1/2 h-8"
           >
             <input
-              :id="index"
+              :id="organization"
               v-model="selectedOrganizations"
               :value="organization"
               type="checkbox"
@@ -17,7 +17,7 @@
               :data-test="organization"
               @change="selectOrganization"
             />
-            <label :for="index" data-test="organization">{{
+            <label :for="organization" data-test="organization">{{
               organization
             }}</label>
           </li>
