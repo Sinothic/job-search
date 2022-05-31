@@ -118,4 +118,60 @@ describe("getters", () => {
       ]);
     });
   });
+
+  describe("INCLUDE_JOB_BY_JOB_TYPE", () => {
+    describe("when any job type is selected", () => {
+      it("includes job", () => {
+        const state = {
+          selectedJobTypes: [],
+        };
+        const job = {
+          jobType: "Full-time",
+        };
+
+        const isIncludedJob = getters.INCLUDE_JOB_BY_JOB_TYPE(state)(job);
+        expect(isIncludedJob).toBe(true);
+      });
+    });
+
+    it("identifies if the job is associated with given job type", () => {
+      const state = {
+        selectedJobTypes: ["Full-time", "Part-time"],
+      };
+      const job = {
+        jobType: "Full-time",
+      };
+
+      const isIncludedJob = getters.INCLUDE_JOB_BY_JOB_TYPE(state)(job);
+      expect(isIncludedJob).toBe(true);
+    });
+  });
+
+  describe("INCLUDE_JOB_BY_ORGANIZATION", () => {
+    describe("when any organization is selected", () => {
+      it("includes job", () => {
+        const state = {
+          selectedOrganizations: [],
+        };
+        const job = {
+          organization: "Google",
+        };
+
+        const isIncludedJob = getters.INCLUDE_JOB_BY_ORGANIZATION(state)(job);
+        expect(isIncludedJob).toBe(true);
+      });
+    });
+
+    it("identifies if the job is associated with given organization", () => {
+      const state = {
+        selectedOrganizations: ["Google", "Meta"],
+      };
+      const job = {
+        organization: "Meta",
+      };
+
+      const isIncludedJob = getters.INCLUDE_JOB_BY_ORGANIZATION(state)(job);
+      expect(isIncludedJob).toBe(true);
+    });
+  });
 });
