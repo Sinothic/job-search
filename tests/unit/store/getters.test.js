@@ -89,4 +89,24 @@ describe("getters", () => {
       expect(isIncludedJob).toBe(true);
     });
   });
+
+  describe("FILTERED_JOBS", () => {
+    it("filters jobs by organization and job type", () => {
+      const INCLUDE_JOB_BY_ORGANIZATION = jest.fn().mockReturnValue(true);
+      const INCLUDE_JOB_BY_JOB_TYPE = jest.fn().mockReturnValue(true);
+      const job = { id: 1, jobType: "Full-time", organization: "Google" };
+      const state = {
+        jobs: [job],
+      };
+      const mockGetters = {
+        INCLUDE_JOB_BY_ORGANIZATION,
+        INCLUDE_JOB_BY_JOB_TYPE,
+      };
+
+      const filteredJob = getters.FILTERED_JOBS(state, mockGetters);
+      expect(filteredJob).toEqual([job]);
+      expect(INCLUDE_JOB_BY_ORGANIZATION).toHaveBeenCalledWith(job);
+      expect(INCLUDE_JOB_BY_JOB_TYPE).toHaveBeenCalledWith(job);
+    });
+  });
 });
