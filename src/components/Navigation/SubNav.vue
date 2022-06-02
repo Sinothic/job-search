@@ -19,13 +19,13 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import { useRoute } from "vue-router";
+
+import useConfirmRoute from "@/composables/useConfirmeRoute";
 
 export default {
   name: "SubNav",
   setup() {
-    const route = useRoute();
-    const onJobResultPage = computed(() => route.name === "JobResults");
+    const onJobResultPage = useConfirmRoute("JobResults");
 
     const store = useStore();
     const FILTERED_JOBS = computed(() => store.getters.FILTERED_JOBS);
