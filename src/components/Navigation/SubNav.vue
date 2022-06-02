@@ -17,8 +17,6 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
-// import { FILTERED_JOBS } from "@/store/constants";
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
