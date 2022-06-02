@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { ref, computed } from "vue";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Accordion",
@@ -27,20 +28,18 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      isOpen: false,
+  setup() {
+    const isOpen = ref(false);
+
+    const caretIcon = computed(() =>
+      isOpen.value ? ["fas", "angle-up"] : ["fas", "angle-down"]
+    );
+
+    const toggleAccordion = () => {
+      isOpen.value = !isOpen.value;
     };
-  },
-  computed: {
-    caretIcon() {
-      return this.isOpen ? ["fas", "angle-up"] : ["fas", "angle-down"];
-    },
-  },
-  methods: {
-    toggleAccordion() {
-      this.isOpen = !this.isOpen;
-    },
+
+    return { isOpen, caretIcon, toggleAccordion };
   },
 };
 </script>
