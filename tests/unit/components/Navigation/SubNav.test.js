@@ -1,9 +1,10 @@
 import { mount } from "@vue/test-utils";
-import SubNav from "@/components/Navigation/SubNav.vue";
 import { useStore } from "vuex";
-import { useRoute } from "vue-router";
 jest.mock("vuex");
-jest.mock("vue-router");
+
+import SubNav from "@/components/Navigation/SubNav.vue";
+import useConfirmRoute from "@/composables/useConfirmeRoute";
+jest.mock("@/composables/useConfirmeRoute");
 
 describe("SubNav Component", () => {
   const createConfig = () => ({
@@ -16,9 +17,7 @@ describe("SubNav Component", () => {
 
   describe("when  user is on job page", () => {
     it("displays job count", () => {
-      useRoute.mockReturnValue({
-        name: "JobResults",
-      });
+      useConfirmRoute.mockReturnValue(true);
 
       useStore.mockReturnValue({
         getters: {
@@ -35,9 +34,7 @@ describe("SubNav Component", () => {
 
   describe("when user is not on job page", () => {
     it("does NOT displays job count", () => {
-      useRoute.mockReturnValue({
-        name: "Home",
-      });
+      useConfirmRoute.mockReturnValue(false);
       useStore.mockReturnValue({
         getters: {
           FILTERED_JOBS: [],
