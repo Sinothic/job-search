@@ -3,8 +3,8 @@ import { useStore } from "vuex";
 jest.mock("vuex");
 
 import SubNav from "@/components/Navigation/SubNav.vue";
-import useConfirmRoute from "@/composables/useConfirmeRoute";
-jest.mock("@/composables/useConfirmeRoute");
+import useConfirmRoute from "@/composables/useConfirmRoute";
+jest.mock("@/composables/useConfirmRoute");
 
 describe("SubNav Component", () => {
   const createConfig = () => ({

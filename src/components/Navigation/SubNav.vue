@@ -20,7 +20,7 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 
-import useConfirmRoute from "@/composables/useConfirmeRoute";
+import useConfirmRoute from "@/composables/useConfirmRoute";
 
 export default {
   name: "SubNav",
